@@ -3,21 +3,24 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'junon/version'
 
-Gem::Specification.new do |spec|
-  spec.name          = "junon"
-  spec.version       = Junon::VERSION
-  spec.authors       = ["Travis Dempsey"]
-  spec.email         = ["dempsey.travis@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
-  spec.license       = "MIT"
+Gem::Specification.new do |gem|
+  gem.name          = 'junon'
+  gem.version       = Junon::VERSION
+  gem.authors       = ['Travis Dempsey']
+  gem.email         = ['travis@infochimps.com']
+  gem.licenses      = ['Apache 2.0']
+  gem.homepage      = 'https://github.com/infochimps-labs/junon.git'
+  gem.summary       = 'A Ruby client library for RunDeck'
+  gem.description   = <<-DESC.gsub(/^ {4}/, '').strip
+    Named after the airbase city in Final Fantasy VII, Junon.
+  DESC
 
-  spec.files         = `git ls-files`.split($/)
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
-  spec.require_paths = ["lib"]
+  gem.files         = `git ls-files`.split($/)
+  gem.executables   = gem.files.grep(/^bin/){ |f| File.basename(f) }
+  gem.test_files    = gem.files.grep(/^spec/)
+  gem.require_paths = ['lib']
 
-  spec.add_development_dependency "bundler", "~> 1.3"
-  spec.add_development_dependency "rake"
+  gem.add_development_dependency('bundler', '~> 1.3')
+  gem.add_development_dependency('rspec',   '~> 2')
+  gem.add_development_dependency('rake',    '>= 0.8')
 end

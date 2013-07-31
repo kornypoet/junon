@@ -1,6 +1,6 @@
 # Junon
 
-TODO: Write a gem description
+A Ruby client library for RunDeck.
 
 ## Installation
 
@@ -17,8 +17,6 @@ Or install it yourself as:
     $ gem install junon
 
 ## Usage
-
-TODO: Write usage instructions here
 
 ## Contributing
 

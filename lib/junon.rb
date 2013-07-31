@@ -1,5 +1,5 @@
-require "junon/version"
+require 'junon/connection'
 
 module Junon
-  # Your code goes here...
+
 end
