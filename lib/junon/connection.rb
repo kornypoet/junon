@@ -41,18 +41,18 @@ module Junon
       response = connection.get(path) do |request|
         request.params = options unless options.nil?
       end
-      handle_response(response)
+      handle_response(path, response)
     end
 
     def post(path, options = nil)
       response = connection.post(path) do |request|
         request.params = options unless options.nil?
       end
-      handle_response(response)
+      handle_response(path, response)
     end
 
-    def handle_response response
-      response.body
+    def handle_response(path, response)
+      ResponseHandler.receive_as(path, response.body)
     end
   end
 end
