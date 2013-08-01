@@ -1,0 +1,1 @@
+rundeck: java -jar ${RD_HOME}/rundeck-launcher-${RD_VERSION}.jar
