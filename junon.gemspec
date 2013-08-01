@@ -20,5 +20,8 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(/^spec/)
   gem.require_paths = ['lib']
 
+  gem.add_dependency('faraday',            '~> 0.8')
+  gem.add_dependency('faraday_middleware', '~> 0.9')
+
   gem.add_development_dependency('bundler', '~> 1.3')
 end
