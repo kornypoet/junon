@@ -5,6 +5,6 @@ module Junon
     field :id,      String
     field :name,    String
     field :group,   String
-    field :porject, String
+    field :project, String
   end
 end

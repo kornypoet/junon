@@ -1,4 +1,4 @@
-module Junon
+module Junon  
   class ResponseHandler
     
     ResponseMapping = {} unless defined? ResponseMapping
@@ -32,9 +32,36 @@ module Junon
     end
   end
   
+  class ResponseArray < Gorillib::Factory::ArrayFactory
+    self.product = Array
+    def response_key
+      
+    end
+    def convert params
+      puts response_key
+      jobs = [params['job']].flatten.compact
+      super(jobs)
+    end
+    register_factory!(self)
+  end
+
   class ProjectResponse < ApiResponse
     register_handler_as :projects
-    field :projects, Hash
+    field :projects, Hash    
+  end
+  
+  class JobResponse < ApiResponse
+    register_handler_as :jobs
+    field :jobs, ResponseArray, of: Job
+  end
+
+  class ExecutionResponse < ApiResponse
+    register_handler_as :execution
+
+    field :executions, ResponseArray, of: Hash
+    def self.receive whatever
+      whatever
+    end
   end
   
 end

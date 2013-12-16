@@ -1,0 +1,29 @@
+<joblist>
+  <job>
+    <uuid>12345</uuid>
+    <name>jake</name>
+    <description>Makin bacon pancakes</description>
+    <group>storm</group>
+    <context>
+      <project>shiva</project>
+      <options>
+	<option name="foo" description="the foo option"/>
+	<option name="bar" description="the bar option"/>
+      </options>
+    </context>
+    <sequence>
+      <command>
+	<script><![CDATA[#!/bin/bash
+echo $RD_OPTION_FOO
+echo $RD_OPTION_BAR]]></script>
+      </command>
+      <strategy>step-first</strategy>
+    </sequence>
+    <dispatch>
+      <threadcount>1</threadcount>
+      <keepgoing>false</keepgoing>
+      <rankAttribute>nodename</rankAttribute>
+      <rankOrder>descending</rankOrder>
+    </dispatch>
+  </job>
+</joblist>

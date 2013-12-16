@@ -37,22 +37,29 @@ module Junon
       connection.headers['X-Rundeck-Auth-Token'] = options[:token]
     end
 
-    def get(path, options = nil)
+    def call_http_method(action, path, params = nil, handler = nil)
+      response = connection.send(action, path) do |request|
+        request.params = params unless params.nil?
+      end
+      handle_response(handler || path, response)
+    end
+    
+    def get(path, params = nil)
       response = connection.get(path) do |request|
-        request.params = options unless options.nil?
+        request.params = params unless params.nil?
       end
       handle_response(path, response)
     end
 
-    def post(path, options = nil)
+    def post(path, params = nil)
       response = connection.post(path) do |request|
-        request.params = options unless options.nil?
+        request.params = params unless params.nil?
       end
       handle_response(path, response)
     end
 
-    def handle_response(path, response)
-      ResponseHandler.receive_as(path, response.body)
+    def handle_response(handler, response)
+      ResponseHandler.receive_as(handler, response.body)
     end
   end
 end
